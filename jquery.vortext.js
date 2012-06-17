@@ -58,7 +58,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			multiply: 2,
 			letters: false
 		};
-	
+
 	function vortext(elt, options) {
 		domPrefix = getDomPrefix();
 		elt = $(elt);
@@ -74,17 +74,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			pt, lastPt, wordData, refreshPositionsTID;
 		
 		texts.each(function (i, text) {
-			$(text).replaceWith(text.textContent.replace(reg, '<span class="vortext">$1</span>'));
+			$(text).replaceWith(text.textContent.replace(reg, '<span class="single-word">$1</span>'));
+		});
+
+		$(".single-word").bind("mouseover", function() {
+			console.log($(this).val());
 		});
 		
-		elt.css({
-			position: 'relative'
-		});
+		// elt.css({
+		// 	position: 'relative'
+		// });
 		
-		var wordElts = elt.find('span.vortext').css({
-			position: 'relative',
-			display: 'inline-block'
-		});
+		// var wordElts = elt.find('span.vortext').css({
+		// 	position: 'relative',
+		// 	display: 'inline-block'
+		// });
 		
 		wordData = getPositionData(wordElts);
 		
